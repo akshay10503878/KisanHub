@@ -18,3 +18,7 @@
 4) You can also email the saved csv file bu clicking share button on screen.
 
 5) You can download the data , every time you click download button on main screen.
+
+6) Install Pods before running the applications.
+
+7) Supported platforms iOS 9 +
