@@ -12,7 +12,7 @@
         <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="KeyValue" inverseName="newRelationship" inverseEntity="KeyValue" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WheatherStatistics" positionX="-180" positionY="9" width="128" height="88"/>
         <element name="KeyValue" positionX="18" positionY="99" width="128" height="103"/>
+        <element name="WheatherStatistics" positionX="-180" positionY="9" width="128" height="88"/>
     </elements>
 </model>

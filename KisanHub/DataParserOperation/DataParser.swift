@@ -87,16 +87,19 @@ class DataParser: Operation {
         var lines = Array(datalines[(headingIndex+1)..<datalines.count])
         print("\(index)")
         
+        var keyValues = Set<KeyValue>()
         let coreFuncs = CoreFunctionalities()
         for i in lines.startIndex..<lines.endIndex {
             emptyFieldCheck(string: &lines[i])
             let values = lines[i].components(separatedBy:"  ").map{  $0.replacingOccurrences(of: " ", with: "") }.filter{$0 != ""}.map{ $0 == "---" ? "N/A" : $0 }
             let year = values[0]
             DispatchQueue.main.async{
-                let keyValues =  coreFuncs.addKeyValues(year: year, keys: keys, values: Array(values[1..<values.count]))
-                coreFuncs.addWheatherStatistics(country: country, wheather: wheather, values: keyValues)
-                ad.saveContext()
+                keyValues  = keyValues.union(coreFuncs.addKeyValues(year: year, keys: keys, values: Array(values[1..<values.count])))
             }
+        }
+        DispatchQueue.main.async{
+            coreFuncs.addWheatherStatistics(country: country, wheather: wheather, values: keyValues)
+            ad.saveContext()
         }
     }
     

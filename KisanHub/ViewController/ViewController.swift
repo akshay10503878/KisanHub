@@ -8,12 +8,17 @@
 
 import UIKit
 import MessageUI
+import CoreData
+
+let countries = ["Wales","UK","Scotland","England"]
+let wheathers = ["Tmax","Tmin","Tmean","Sunshine","Rainfall"]
+
 
 
 class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINavigationControllerDelegate {
     
-    let countries = ["UK","England","Scotland","Wales"]
-    let wheathers = ["Tmax","Tmin","Tmean","Sunshine","Rainfall"]
+    @IBOutlet var ChartsView: CustomScrollView!
+    
 
     let networkmanager = NetworkManager()
     
@@ -34,6 +39,8 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+      ChartsView.configureCharts()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +49,7 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
     }
 
     
-    
+
     @IBAction func downloadButton(_ sender: Any) {
         
         let coreFuncs = CoreFunctionalities()
@@ -64,6 +71,7 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
         }
     }
     
+    
     func startactivityIndicator() {
         self.view.addSubview(LoadingView)
     }
@@ -71,6 +79,7 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
     func stopActivityIndicator(){
         DispatchQueue.main.async {
             self.LoadingView.removeFromSuperview()
+            self.ChartsView.configureCharts()
         }
       
     }
@@ -98,7 +107,6 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
 
         parsingQueue.addOperation(Dp)
 
-        
     }
 
     /*--Parsing data end--*/
@@ -158,8 +166,7 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
             print("Failed to create file")
             print("\(error)")
         }
-        
-        print(path)
+
     }
     
     
@@ -196,13 +203,17 @@ class ViewController: UIViewController,MFMailComposeViewControllerDelegate,UINav
             
         }
     }
-    /*--End of Dumping and Sharing of csv--*/
     
     /*---MfmalViewController delegates-*/
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
  
+    /*--End of Dumping and Sharing of csv--*/
+    
+    
+    
+    
 
 }
 
