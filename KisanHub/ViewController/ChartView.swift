@@ -54,6 +54,8 @@ class CustomScrollView: UIScrollView,ChartDelegate{
     
     func configureChart1( results : [WheatherStatistics]) {
         
+        chartView1.removeAllSeries()
+        
         var results = results
         
         /*--filterig with respect to data--*/
@@ -111,6 +113,7 @@ class CustomScrollView: UIScrollView,ChartDelegate{
     
     func configureChart2(results : [WheatherStatistics]) {
         
+        chartView2.removeAllSeries()
         var results = results
         
         results = results.filter({ (obj) -> Bool in
@@ -172,6 +175,8 @@ class CustomScrollView: UIScrollView,ChartDelegate{
     
     
     func configureChart3( results : [WheatherStatistics]) {
+        
+        chartView3.removeAllSeries()
         
         var results = results
         
