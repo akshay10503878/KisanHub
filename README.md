@@ -22,3 +22,9 @@
 6) Install Pods before running the applications.
 
 7) Supported platforms iOS 9 +
+
+
+
+-Screenshots
+
+![Alt text](/Screenshots/screen1.png?raw=true  "MainScreen")
