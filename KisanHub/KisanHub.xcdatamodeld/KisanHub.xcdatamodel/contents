@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="KeyValue" representedClassName="KeyValue" syncable="YES" codeGenerationType="class">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WheatherStatistics" inverseName="values" inverseEntity="WheatherStatistics" syncable="YES"/>
+    </entity>
+    <entity name="WheatherStatistics" representedClassName="WheatherStatistics" syncable="YES" codeGenerationType="class">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wheather" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="KeyValue" inverseName="newRelationship" inverseEntity="KeyValue" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="WheatherStatistics" positionX="-180" positionY="9" width="128" height="88"/>
+        <element name="KeyValue" positionX="18" positionY="99" width="128" height="103"/>
+    </elements>
+</model>
